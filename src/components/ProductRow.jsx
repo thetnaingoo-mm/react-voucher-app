@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { HiPencil, HiTrash } from 'react-icons/hi'
+import { useSWRConfig } from 'swr'
+import { Bouncy } from 'ldrs/react'
+import 'ldrs/react/Bouncy.css'
+
+
 
 const ProductRow = ({product: {id, product_name, price, created_at}}) => {
+
+    const {mutate} = useSWRConfig();
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const date = new Date(created_at);
     const currentDate = date.toLocaleDateString("en-GB", { 
@@ -16,9 +24,11 @@ const ProductRow = ({product: {id, product_name, price, created_at}}) => {
     });
 
     const handleDeleteBtn = async () => {
-        await fetch(import.meta.env.VITE_API_URL + `/product/${id}`, {
+        setIsDeleting(true);
+        await fetch(import.meta.env.VITE_API_URL + `/products/${id}`, {
             method: "DELETE"
         });
+        mutate(import.meta.env.VITE_API_URL + `/products`)
     }
 
     return (
@@ -48,9 +58,12 @@ const ProductRow = ({product: {id, product_name, price, created_at}}) => {
                     <button
                         onClick={handleDeleteBtn}
                         type="button"
-                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700"
+                        className=" size-10 flex justify-center items-center text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700"
                     >
-                        <HiTrash className="text-red-500 text-lg" />
+                        {isDeleting ? 
+                        (<Bouncy size="20" speed="1.75" color="red" />) : 
+                        ( <HiTrash className="text-red-500 text-lg" />)}
+                       
                     </button>
                 </div>
             </td>

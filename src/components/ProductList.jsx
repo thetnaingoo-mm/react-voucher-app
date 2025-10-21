@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import ProductListLoader from './ProductListLoader';
 import ProductRow from './ProductRow';
 import ProductRowEmptyState from './ProductRowEmptyState';
+import { Link } from 'react-router';
 
 const fetcher = (url) => fetch(url).then(res => res.json());
 
@@ -23,9 +24,9 @@ const ProductList = () => {
           <input type="text" id="table-search" className="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search products" />
         </div>
         <div className="">
-          <button className=' flex gap-2 items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2'>
+          <Link to="/products/create" className=' flex gap-2 items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2'>
             <HiPlus /> Add New
-          </button>
+          </Link>
         </div>
       </div>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500">

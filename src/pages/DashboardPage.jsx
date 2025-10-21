@@ -9,7 +9,7 @@ const DashboardPage = () => {
       <Container>
         <div className=" grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className=" col-span-1">
-              <ModuleBtn name={"Product Module"} url={'/product'} icon={<HiCircleStack className=' size-10' />}/>
+              <ModuleBtn name={"Product Module"} url={'/products'} icon={<HiCircleStack className=' size-10' />}/>
           </div>
            <div className=" col-span-1">
               <ModuleBtn name={"Sale Module"} url={'/sale'} icon={<HiComputerDesktop className=' size-10' />}/>

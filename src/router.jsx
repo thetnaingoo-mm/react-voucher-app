@@ -8,6 +8,7 @@ import VoucherPage from "./pages/VoucherPage";
 import VoucherDetailPage from "./pages/VoucherDetailPage";
 import { createBrowserRouter } from "react-router";
 import React from "react";
+import ProductCreatePage from "./pages/ProductCreatePage";
 
 const router = createBrowserRouter([
     {
@@ -20,8 +21,12 @@ const router = createBrowserRouter([
                 element: <DashboardPage />,
             },
             {
-                path: "/product",
+                path: "/products",
                 element: <ProductPage />
+            },
+            {
+                path: "/products/create",
+                element: <ProductCreatePage />
             },
             {
                 path: "/sale",
