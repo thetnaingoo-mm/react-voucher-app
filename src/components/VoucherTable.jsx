@@ -1,0 +1,76 @@
+import React from 'react'
+import useRecordStore from '../store/useRecordStore'
+import VoucherTableRow from './VoucherTableRow';
+
+const VoucherTable = () => {
+    const {records} = useRecordStore();
+    const total = records.reduce((a,b) => a + b.cost, 0);
+    const tax = total * 0.07;
+    const netTotal = total + tax;
+    return (
+        <div className="relative overflow-x-auto mb-3">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 text-end">
+                    <tr>
+                        <th scope="col" className="px-6 py-3">
+                            #
+                        </th>
+                         <th scope="col" className="px-6 py-3">
+                            Product Name
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Price
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Quantity
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Cost
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="recordGroup">                    
+                    {records.length === 0 &&
+                    <tr className="hidden last:table-row border-slate-200 border-b">
+                        <td colSpan={6} className="px-6 py-4 text-center">
+                            There is no record. Buy Something
+                        </td>
+                    </tr>  }
+                    {records.map((record, index) => (
+                         <VoucherTableRow  key={record.id} record={record} index={index} />
+                    ))}
+                </tbody>
+                <tfoot>
+                    <tr className="border-b">
+                        <td className="px-6 py-4 text-end" colSpan={4}>
+                        Total
+                        </td>
+                        <td className="px-6 py-4 text-end">{total.toFixed(2)}</td>
+                        <td className="px-6 py-4 text-end"> </td>
+                    </tr>
+                    <tr className="border-b">
+                        <td className="px-6 py-4 text-end" colSpan={4}>
+                        Tax (Vat 7%)
+                        </td>
+                        <td className="px-6 py-4 text-end">{tax.toFixed(2)}</td>
+                        <td className="px-6 py-4 text-end"> </td>
+                    </tr>
+                    <tr className="border-b">
+                        <td className="px-6 py-4 text-end" colSpan={4}>
+                        Net Total (MMK)
+                        </td>
+                        <td className="px-6 py-4 text-end">{netTotal.toFixed(2)}</td>
+                        <td className="px-6 py-4 text-end"> </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+
+    )
+}
+
+export default VoucherTable

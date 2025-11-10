@@ -3,6 +3,8 @@ import { HiPencil, HiTrash } from 'react-icons/hi'
 import { useSWRConfig } from 'swr'
 import { Bouncy } from 'ldrs/react'
 import 'ldrs/react/Bouncy.css'
+import toast from 'react-hot-toast'
+import { Link } from 'react-router'
 
 
 
@@ -29,6 +31,7 @@ const ProductRow = ({product: {id, product_name, price, created_at}}) => {
             method: "DELETE"
         });
         mutate(import.meta.env.VITE_API_URL + `/products`)
+        toast.success('Product delete successfully')
     }
 
     return (
@@ -49,12 +52,12 @@ const ProductRow = ({product: {id, product_name, price, created_at}}) => {
             </td>
             <td className="px-6 py-4 text-end">
                 <div className="inline-flex rounded-md shadow-xs" role="group">
-                    <button
-                        type="button"
+                    <Link 
+                        to={`edit/${id}`}
                         className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700"
                     >
                         <HiPencil className="text-gray-500 text-lg" />
-                    </button>
+                    </Link>
                     <button
                         onClick={handleDeleteBtn}
                         type="button"
