@@ -69,6 +69,57 @@
       "tax": 329.00000000000006,
       "netTotal": 5029,
       "id": 3
+    },
+    {
+      "voucher_id": "INV-20251113-3403",
+      "customer_name": "Blossom Marquez",
+      "customer_email": "wepobidypy@mailinator.com",
+      "slae_date": "2025-11-13",
+      "all_correct": true,
+      "records": [
+        {
+          "id": 1763015833573,
+          "product": {
+            "id": 9,
+            "product_name": "Custom Web Application Development",
+            "price": 2000,
+            "created_at": "2024-09-06T09:45:00Z"
+          },
+          "quantity": "1",
+          "cost": 2000,
+          "created_at": "2025-11-13T06:37:13.573Z"
+        }
+      ],
+      "total": 2000,
+      "tax": 140,
+      "netTotal": 2140,
+      "id": 4
+    },
+    {
+      "voucher_id": "INV-20251113-8655",
+      "customer_name": "Blossom Marquez",
+      "customer_email": "wepobidypy@mailinator.com",
+      "sale_date": "2025-11-13",
+      "redirect_to_detail": true,
+      "all_correct": true,
+      "records": [
+        {
+          "id": 1763028484674,
+          "product": {
+            "id": 9,
+            "product_name": "Custom Web Application Development",
+            "price": 2000,
+            "created_at": "2024-09-06T09:45:00Z"
+          },
+          "quantity": "1",
+          "cost": 2000,
+          "created_at": "2025-11-13T10:08:04.674Z"
+        }
+      ],
+      "total": 2000,
+      "tax": 140,
+      "netTotal": 2140,
+      "id": 5
     }
   ]
 }
